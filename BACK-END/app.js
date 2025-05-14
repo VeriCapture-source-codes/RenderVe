@@ -37,7 +37,7 @@ app.use(
 );
 
 // Serve static files from frontend build
-app.use(express.static(path.join(__dirname, "..", "FRONT-END", "build")));
+app.use(express.static(path.join(__dirname, "..", "FRONT-END", "dist")));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -74,7 +74,7 @@ app.use("/api/v1/replies", replyRouter); // Change to a unique path
 
 // Serve React frontend for any unmatched route
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "FRONT-END", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "FRONT-END", "dist", "index.html"));
 });
 
 app.use(notFound);

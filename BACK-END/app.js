@@ -4,7 +4,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import connectDB from "./database/connectDB.js";
-import { ApiError, globalError, notFound } from "./utils/error.js";
+import { globalError, notFound } from "./utils/error.js";
 import userRouter from "./routers/users.routers.js";
 import passport from "passport";
 import session from "express-session";
@@ -13,6 +13,7 @@ import commentRouter from "./routers/comment.routers.js";
 import replyRouter from "./routers/reply.routers.js";
 import logger from "./utils/logger.js";
 import "express-async-errors";
+import MongoStore from "connect-mongo";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -42,14 +43,31 @@ app.use(express.static(path.join(__dirname, "..", "FRONT-END", "dist")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// app.use(
+//   session({
+//     secret: process.env.JWT_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       secure: process.env.NODE_ENV === "production", // Secure cookies in production
+//       httpOnly: true, // Prevents access to cookies via JavaScript
+//     },
+//   })
+// );
+
 app.use(
   session({
     secret: process.env.JWT_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI, // MongoDB connection string
+      collectionName: "sessions",
+    }),
     cookie: {
-      secure: process.env.NODE_ENV === "production", // Secure cookies in production
-      httpOnly: true, // Prevents access to cookies via JavaScript
+      maxAge: 1000 * 60 * 60 * 24 * 3, // 3 day
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production", // true on HTTPS
     },
   })
 );

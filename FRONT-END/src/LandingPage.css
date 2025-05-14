@@ -1,0 +1,220 @@
+/* General Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f5f5;
+  color: #1a1a1a;
+}
+
+.landing {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.signup-btn {
+  background: #00e3e3;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-image: url('/public/image-2@2x.png');
+  background-size: cover;
+  background-position: center;
+  color: #000;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+}
+
+.explore-btn, .login-btn {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.explore-btn {
+  background-color: #0057d9;
+  color: white;
+}
+
+.login-btn {
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+/* Check Before Section */
+.check-before {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.check-before h2 span {
+  color: red;
+}
+
+/* Report Card */
+.report-card {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  padding: 1rem;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+/* Map Section */
+.map-section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-img {
+  max-width: 400px;
+  width: 100%;
+  margin: 1rem;
+}
+
+/* Lives Saved */
+.lives-saved {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.lives-saved span {
+  color: green;
+  font-weight: bold;
+}
+
+/* Offer Section */
+.offer-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #fff;
+}
+
+.offer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.offer-box {
+  background: #f0f0f0;
+  padding: 2rem;
+  margin: 1rem;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+  padding: 2rem;
+  background: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer a {
+  color: white;
+  margin: 0.5rem;
+  text-decoration: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .map-section, .offer-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links {
+    margin-top: 1rem;
+  }
+
+  .nav-links a {
+    display: block;
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .explore-btn, .login-btn {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .card {
+    width: 100%;
+    margin: 0 1rem;
+  }
+}

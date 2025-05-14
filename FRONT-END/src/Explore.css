@@ -1,0 +1,265 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.explore-container {
+  display: flex;
+  background-color: #f3f4f6;
+  
+}
+
+/* Sidebar */
+.sidebar {
+  width: 100px;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-right: 1px solid #e5e7eb;
+}
+
+.sidebar-logo img {
+  margin-bottom: 1rem;
+  width: 50%;
+  
+  
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  width: 80%;
+}
+
+.nav-item:hover {
+  background-color: #f3f4f6;
+}
+
+.nav-item.active {
+  background-color: #e5e7eb;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 240px;
+  padding: 1.5rem;
+}
+
+.top-nav {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+}
+
+.top-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.top-links a {
+  font-weight: 600;
+  color: #1f2937;
+  margin-right: 2rem;
+  text-decoration: none;
+}
+
+.top-links a:hover {
+  color: #10b981;
+}
+
+.action-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0 1.5rem 1rem;
+}
+
+.btn {
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-update {
+  background-color: #e5e7eb;
+  color: #1f2937;
+}
+
+.btn-live {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+/* Category Buttons */
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: #f9fafb;
+}
+
+.category-button {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #374151;
+}
+
+.category-button:hover {
+  background-color: #d1fae5;
+}
+
+.category-button.active {
+  background-color: #10b981;
+  color: white;
+  border: none;
+}
+
+/* Feed */
+.feed {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.feed-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  margin-top: 5rem;
+}
+
+.feed-empty img {
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+}
+
+.post-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.post-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.icon-btn svg {
+  stroke: #333;
+}
+
+.icon-btn svg:hover {
+  stroke: #007bff;
+}
+
+/* avatar and username */
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Post likes */
+.like-count {
+  font-size: 14px;
+  color: #555;
+}
+
+@media (min-width: 640px) {
+  .post-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .post-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.post-card {
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.post-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-media {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+}

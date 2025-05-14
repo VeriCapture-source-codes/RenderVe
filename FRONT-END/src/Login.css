@@ -1,0 +1,214 @@
+
+/* Container */
+.login-container {
+  display: flex;
+  background-color: #F5F5F5;
+  padding: 40px;
+}
+
+/* Left Image Section */
+.login-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-image {
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
+  
+}
+
+/* Right Form Section */
+.login-right {
+  flex: 1;
+  background: white;
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo-image{
+width: 150px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+p {
+  margin-top: 5px;
+  color: #666;
+
+}
+
+/* Social icons */
+/* General button styling */
+.btn {
+  padding: 8px 12px;       /* Reduce padding to shrink button size */
+  font-size: 14px;         /* Smaller font size */
+  border: none;            /* Remove default border */
+  cursor: pointer;         /* Pointer cursor on hover */
+  display: flex;           /* Flex layout for icon + text alignment */
+  align-items: center;     /* Center items vertically */
+  justify-content: center; /* Center content horizontally */
+  height: 40px;            /* Fixed height for consistency */
+  transition: all 0.3s;    /* Smooth hover effect */
+}
+
+/* Remove border-radius */
+.btn-no-radius {
+  border-radius: 0 !important;
+}
+
+/* Google button (red) */
+.btn-danger {
+  background-color: #DB4437; /* Google red */
+  color: white;
+}
+
+/* Facebook button (blue) */
+.btn-primary {
+  background-color: #3B5998; /* Facebook blue */
+  color: white;
+}
+
+/* X/Twitter button (black) */
+.btn-secondary {
+  background-color: #000000; /* X/Twitter black */
+  color: white;
+}
+
+/* Button hover effects */
+.btn-danger:hover { background-color: #C23321; }
+.btn-primary:hover { background-color: #2D4373; }
+.btn-secondary:hover { background-color: #222; }
+
+/* Icon styling inside buttons */
+.btn img {
+  width: 20px;            /* Smaller icon size */
+  height: 20px;
+  margin-right: 8px;      /* Space between icon and text */
+}
+
+/* Responsive adjustments for the grid */
+.row {
+  margin: 0 -5px;         /* Offset column padding */
+}
+
+.col-12, .col-6 {
+  padding: 0 5px;         /* Add spacing between columns */
+}
+
+/* Ensure full-width buttons */
+.form-control {
+  width: 100%;
+  box-sizing: border-box;  /* Include padding in width calculation */
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 1rem;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1rem;
+}
+
+.input-box {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+}
+
+/* Terms and conditions */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.options label{
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.forgot-link {
+  color: #18c7c7;
+  text-decoration: none;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Login button */
+.sign-in-btn {
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+.sign-in-btn:hover {
+  background-color: #333;
+}

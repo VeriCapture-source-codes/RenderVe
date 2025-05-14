@@ -1,0 +1,209 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+
+
+
+/* Container */
+.auth-container {
+  margin: 0 auto;
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  padding: 1rem;
+}
+
+/* Left Image */
+.auth-image {
+  flex: 1;
+  height: 50%;
+  width: 100%;
+   
+}
+
+/* Right Form */
+.auth-right {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.auth-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.auth-logo img{
+width: 150px;
+}
+
+/* Auth form style*/
+.auth-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form h1 {
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+.auth-form p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form p a {
+  color:#00ecd0;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* Input Styles */
+.auth-form input,
+.auth-form select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  
+}
+
+.auth-form input:focus,
+.auth-form select:focus {
+  border-color: #00ecd0;
+  box-shadow: 0 0 5px rgba(0, 236, 208, 0.1);
+}
+
+/* Checkbox style */
+.terms-container {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  font-size: 14px;
+  color: #333;
+}
+
+.terms-container input[type="checkbox"] {
+  width: 16px;
+   height: 16px; 
+}
+
+.terms-container a {
+  color: #007BFF;
+  text-decoration: underline;
+}
+
+
+/* Password wrapper */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+
+/* Button */
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #d1d1d1;
+  border: none;
+  border-radius: 6px;
+  color: #444;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Divider style */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ccc;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 1rem;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1rem;
+}
+
+/* Social Buttons */
+.social-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.social-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-button:hover {
+  background-color: #e0e0e0;
+}
+
+.social-button svg {
+  width: 20px;
+  height: 20px;
+}

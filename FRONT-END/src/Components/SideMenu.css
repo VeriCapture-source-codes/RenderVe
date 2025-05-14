@@ -1,0 +1,28 @@
+/* Sidebar link base */
+.sidebar-link {
+    color: black;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.2s;
+    display: flex !important;              /* Align icon and text in a row */
+    align-items: center !important;        /* Vertically center items */
+    gap: 8px !important;                   /* Space between icon and text */
+    white-space: nowrap !important;        /* Prevent text from wrapping */
+    color: #000000 !important;
+}
+  
+  /* Hover effect */
+  .sidebar-link:hover {
+    background-color: #f1f1f1;
+    text-decoration: none;
+    color: black;
+  }
+  
+  /* Active state */
+  .sidebar-link.active {
+    background-color: #e6e6e6;
+    font-weight: 600;
+  }
+  

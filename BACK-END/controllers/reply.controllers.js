@@ -1,6 +1,6 @@
 import replyModel from "../models/replyModel.js";
 import userModel from "../models/userModel.js";
-import { ApiError, asyncHandler } from "../utils/error.js";
+import { ApiError } from "../utils/error.js";
 import commentModel from "../models/commentModel.js";
 
 export const createReply = async (req, res, next) => {

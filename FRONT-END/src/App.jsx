@@ -11,6 +11,7 @@ import Register from './Register.jsx'
 import Profile from './CreateProfile.jsx'
 import LandingPage from './LandingPage.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import Home from './Home.jsx'
 
 function App() {

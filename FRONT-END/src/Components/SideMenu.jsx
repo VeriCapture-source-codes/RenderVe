@@ -1,15 +1,26 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
+import './SidebarMenu.css'; 
 
 const SidebarMenu = () => {
   return (
-    <div className="">
-      <Nav defaultActiveKey="/home" className="flex-column text-secondary">
-        <Nav.Link href="#" className=" mb-2 sidebar-link"><i className="bi bi-house me-2" /><span>Home</span></Nav.Link>
-        <Nav.Link href="#" className='mb-2 sidebar-link'><i className="bi bi-compass me-2" /><span>Explore</span></Nav.Link>
-        <Nav.Link href="#" className='mb-2 sidebar-link'><i className="bi bi-bell me-2" /><span>Notification</span></Nav.Link>
-        <Nav.Link href="#" className='mb-2 sidebar-link'><i className="bi bi-person me-2" /><span>Profile</span></Nav.Link>
-        <Nav.Link href="#" className='mb-2 sidebar-link'><i className="bi bi-gear me-2" /><span>Settings</span></Nav.Link>
+    <div className="sidebar-container">
+      <Nav defaultActiveKey="/home" className="sidebar-nav">
+        <Nav.Link href="#" className="sidebar-link active">
+          <i className="bi bi-house" /><span>Home</span>
+        </Nav.Link>
+        <Nav.Link href="#" className="sidebar-link">
+          <i className="bi bi-compass" /><span>Explore</span>
+        </Nav.Link>
+        <Nav.Link href="#" className="sidebar-link">
+          <i className="bi bi-bell" /><span>Notification</span>
+        </Nav.Link>
+        <Nav.Link href="#" className="sidebar-link">
+          <i className="bi bi-person" /><span>Profile</span>
+        </Nav.Link>
+        <Nav.Link href="#" className="sidebar-link">
+          <i className="bi bi-gear" /><span>Settings</span>
+        </Nav.Link>
       </Nav>
     </div>
   );

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import defaultUserImage from '../assets/images/user.png';
+import './Header.css'; 
 
 const Header = ({ user, userEmail }) => {
   return (
-    <Navbar bg="white" expand="lg" className="px-4 shadow-sm">
+    <Navbar bg="white" expand="lg" className="custom-navbar">
       <Container fluid>
         {/* Logo */}
         <Navbar.Brand href="#">
@@ -17,7 +18,7 @@ const Header = ({ user, userEmail }) => {
         </Navbar.Brand>
 
         {/* Center Navigation Links */}
-        <Nav className="mx-auto">
+        <Nav className="nav-center">
           <Nav.Link href="#" className="custom-nav-link active">Home</Nav.Link>
           <Nav.Link href="#" className="custom-nav-link">RealTime Capture</Nav.Link>
           <Nav.Link href="#" className="custom-nav-link">Map</Nav.Link>
@@ -25,24 +26,21 @@ const Header = ({ user, userEmail }) => {
         </Nav>
 
         {/* Right User Section */}
-        <div className="d-flex align-items-center">
-          <i className="bi bi-moon me-3" />
+        <div className="user-section">
+          <i className="bi bi-moon theme-toggle-icon" />
 
           <Dropdown>
-            <Dropdown.Toggle variant="light" className="d-flex align-items-center gap-2">
-              {/* Left side: name + location */}
-              <div className="text-start">
-                <div className="fw-semibold">{userEmail || 'Guest'}</div>
-                <div className="text-muted small">Lagos, Nigeria</div>
+            <Dropdown.Toggle variant="light" className="user-dropdown">
+              <div className="user-info">
+                <div className="user-email">{userEmail || 'Guest'}</div>
+                <div className="user-location">Lagos, Nigeria</div>
               </div>
-
-              {/* Right side: user image */}
               <img
                 src={user?.data?.thumbnail || defaultUserImage}
                 alt="User"
                 width="36"
                 height="36"
-                className="rounded-circle"
+                className="user-image"
               />
             </Dropdown.Toggle>
 

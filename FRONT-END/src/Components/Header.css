@@ -1,0 +1,54 @@
+.custom-navbar {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.nav-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.custom-nav-link {
+  color: #333;
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+
+.custom-nav-link.active {
+  color: #007bff;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle-icon {
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.user-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-info {
+  text-align: start;
+}
+
+.user-email {
+  font-weight: 600;
+}
+
+.user-location {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.user-image {
+  border-radius: 50%;
+}

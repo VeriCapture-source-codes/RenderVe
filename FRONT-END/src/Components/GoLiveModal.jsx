@@ -44,7 +44,6 @@ function GoLiveModal({ selectedCategory, onClose }) {
 
   const startRecording = () => {
     const stream = webcamRef.current?.video?.srcObject;
-
     if (!stream || !(stream instanceof MediaStream)) {
       toast.error("Camera not ready. Please wait or try reopening.");
       return;
@@ -155,23 +154,37 @@ function GoLiveModal({ selectedCategory, onClose }) {
 
   return (
     <div style={{
-      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-      background: 'rgba(0,0,0,0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1050
+      position: 'fixed',
+      inset: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1000,
     }}>
-      <div style={{ background: 'white', padding: '2rem', borderRadius: '8px', width: '90%', maxWidth: '500px' }}>
-        <h2 style={{ textAlign: 'center' }}>Upload a Live Video</h2>
-        <p style={{ textAlign: 'center', marginBottom: '1rem' }}>
-          Category: <strong>{selectedCategory}</strong>
+      <div style={{
+        background: '#121212',
+        borderRadius: '12px',
+        padding: '2rem',
+        width: '95%',
+        maxWidth: '520px',
+        color: '#fff',
+        boxShadow: '0 0 20px rgba(0, 224, 184, 0.3)',
+      }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '0.5rem' }}>🎥 Go Live</h2>
+        <p style={{ textAlign: 'center', fontSize: '0.9rem', color: '#ccc', marginBottom: '1.2rem' }}>
+          Category: <strong style={{ color: '#00e0b8' }}>{selectedCategory}</strong>
         </p>
 
         <div
           style={{
-            border: '2px solid #ccc',
+            border: '2px dashed #00e0b8',
+            borderRadius: '10px',
             padding: '1rem',
-            borderRadius: '8px',
-            marginBottom: '1rem',
+            marginBottom: '1.5rem',
             textAlign: 'center',
-            cursor: 'pointer'
+            backgroundColor: '#1e1e1e',
+            cursor: !showCamera && !videoPreviewUrl && !recording ? 'pointer' : 'default'
           }}
           onClick={!showCamera && !videoPreviewUrl && !recording ? openCamera : undefined}
         >
@@ -180,14 +193,18 @@ function GoLiveModal({ selectedCategory, onClose }) {
               audio
               ref={webcamRef}
               videoConstraints={videoConstraints}
-              style={{ width: '100%' }}
+              style={{ width: '100%', borderRadius: '8px' }}
             />
           ) : videoPreviewUrl ? (
-            <video src={videoPreviewUrl} controls style={{ width: '100%', borderRadius: '8px' }} />
+            <video
+              src={videoPreviewUrl}
+              controls
+              style={{ width: '100%', borderRadius: '8px' }}
+            />
           ) : (
-            <div style={{ color: '#666' }}>
+            <div style={{ color: '#00e0b8' }}>
               <img
-                src="https://img.icons8.com/ios/50/000000/camera--v1.png"
+                src="https://img.icons8.com/ios-filled/50/00e0b8/video-call.png"
                 alt="Open Camera"
                 style={{ marginBottom: '0.5rem' }}
               />
@@ -198,27 +215,36 @@ function GoLiveModal({ selectedCategory, onClose }) {
 
         <input
           type="text"
-          placeholder="Click to add caption"
+          placeholder="Enter a caption for your live video"
           value={caption}
           onChange={(e) => setCaption(e.target.value)}
           disabled={submitting}
           style={{
             width: '100%',
-            padding: '0.5rem',
+            padding: '0.75rem',
             marginBottom: '1rem',
-            backgroundColor: '#eee',
-            border: 'none',
-            borderRadius: '4px'
+            border: '1px solid #00e0b8',
+            borderRadius: '6px',
+            backgroundColor: '#1e1e1e',
+            color: '#fff',
+            fontSize: '0.95rem'
           }}
         />
 
         {showCamera && (
-          <div style={{ marginBottom: '1rem', textAlign: 'center' }}>
+          <div style={{ marginBottom: '1.2rem', textAlign: 'center' }}>
             {recording ? (
               <button
                 onClick={stopRecording}
                 disabled={finalizing}
-                style={{ backgroundColor: 'red', color: 'white', padding: '0.5rem 1rem' }}
+                style={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  padding: '0.6rem 1.5rem',
+                  border: 'none',
+                  borderRadius: '5px',
+                  fontWeight: 'bold'
+                }}
               >
                 Stop Recording
               </button>
@@ -226,7 +252,14 @@ function GoLiveModal({ selectedCategory, onClose }) {
               <button
                 onClick={startRecording}
                 disabled={finalizing || cameraInitializing || !cameraReady}
-                style={{ backgroundColor: '#00e0b8', color: 'white', padding: '0.5rem 1rem' }}
+                style={{
+                  backgroundColor: '#00e0b8',
+                  color: '#000',
+                  padding: '0.6rem 1.5rem',
+                  border: 'none',
+                  borderRadius: '5px',
+                  fontWeight: 'bold'
+                }}
               >
                 {cameraInitializing ? 'Initializing...' : 'Start Recording'}
               </button>
@@ -240,7 +273,13 @@ function GoLiveModal({ selectedCategory, onClose }) {
           <button
             onClick={resetModal}
             disabled={submitting || finalizing}
-            style={{ padding: '0.5rem 1rem', border: '1px solid #ccc' }}
+            style={{
+              padding: '0.6rem 1.2rem',
+              backgroundColor: 'transparent',
+              border: '1px solid #444',
+              color: '#ccc',
+              borderRadius: '5px'
+            }}
           >
             Cancel
           </button>
@@ -251,8 +290,11 @@ function GoLiveModal({ selectedCategory, onClose }) {
               backgroundColor: (!caption || recordedChunks.length === 0 || finalizing || submitting)
                 ? 'gray'
                 : '#00e0b8',
-              color: 'white',
-              padding: '0.5rem 1rem',
+              color: '#000',
+              padding: '0.6rem 1.5rem',
+              border: 'none',
+              borderRadius: '5px',
+              fontWeight: 'bold',
               cursor: (!caption || recordedChunks.length === 0 || finalizing || submitting)
                 ? 'not-allowed'
                 : 'pointer'

@@ -7,6 +7,7 @@ import Loader from './Components/Loader';
 import { apiRequest } from './utils/api';
 import { toast, Toaster } from 'react-hot-toast';
 import GoLiveModal from './Components/GoLiveModal';
+import './Home.css';
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -168,9 +169,11 @@ const Home = () => {
           </Col>
 
           <Col md={7} className="py-3 main-cont">
-            <Row className="mb-2">
-              <Col md={12} className="d-flex justify-content-between align-items-center">
-                <span>Top Categories:</span>
+            <Row className="top-categories">
+           <Col xs={12} md={6}>
+           <h6 className="mb-0">Top Categories:</h6>
+            </Col>
+           <Col xs={12} md={6} className="text-md-end mt-2 mt-md-0">
                 <Dropdown show={categoryModal} onToggle={() => setCategoryModal(!categoryModal)}>
                   <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                     {selectedCategory || 'Select Category'}
@@ -189,8 +192,8 @@ const Home = () => {
               </Col>
             </Row>
 
-            <Row className="align-items-center mb-3">
-              <Col md={9}>
+                  <Row className="align-items-center mb-3">
+                <Col md={9} className="mb-2 mb-md-0">  
                 <div className="input-group custom-update-box">
                   <span className="input-group-text bg-white border-end-0 p-0 pe-2">
                     <img
@@ -207,19 +210,19 @@ const Home = () => {
                   />
                 </div>
               </Col>
-
-              <Col md={3} className="text-end">
-                <button
-                  className="btn btn-danger d-flex align-items-center justify-content-center w-100 px-3 py-2"
-                  onClick={openGoLiveModal}
-                >
-                  <i className="bi bi-camera-video-fill me-2"></i>
-                  Go Live
-                </button>
-              </Col>
+                
+                <Col md={3}>
+               <button
+          className="btn btn-go-live w-100"
+         onClick={openGoLiveModal}
+         >
+       <i className="bi bi-camera-video-fill me-2"></i>
+       Go Live
+      </button>
+    </Col>
+            
             </Row>
-
-            {filteredPosts.length > 0 ? (
+         {filteredPosts.length > 0 ? (
               filteredPosts.map((post, index) => (
                 <FeedCard
                   key={index}
@@ -251,20 +254,19 @@ const Home = () => {
             )}
           </Col>
 
-          <Col md={3} className="py-3 d-none d-md-block mb-2 main-cont">
-            <div className="input-group">
-              <span className="input-group-text bg-white border-end-0">
-                <i className="bi bi-search"></i>
-              </span>
-              <input className="form-control border-start-0" placeholder="Type to search" />
-            </div>
+            <Col md={3} className="py-3 d-none d-md-block sidebar-right">
+         <div className="input-group mb-3">
+        <span className="input-group-text bg-white border-end-0">
+      <i className="bi bi-search"></i>
+       </span>
+    <input className="form-control border-start-0" placeholder="Type to search" />
+  </div>
 
-            <Col md={12} className="p-3">
-              <div className="bg-white mt-3">
-                <span>What is happening in your area</span>
-              </div>
-            </Col>
-          </Col>
+     <div className="bg-light p-3 rounded shadow-sm">
+    <span className="fw-bold">What is happening in your area</span>
+    </div>
+  </Col>
+         
         </Row>
 
         {showGoLiveModal && (

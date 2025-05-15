@@ -242,7 +242,7 @@ function GoLiveModal({ selectedCategory, onClose }) {
                   color: 'white',
                   padding: '0.6rem 1.5rem',
                   border: 'none',
-                  borderRadius: '5px',
+                  borderRadius: '10px',
                   fontWeight: 'bold'
                 }}
               >
@@ -257,7 +257,7 @@ function GoLiveModal({ selectedCategory, onClose }) {
                   color: '#000',
                   padding: '0.6rem 1.5rem',
                   border: 'none',
-                  borderRadius: '5px',
+                  borderRadius: '10px',
                   fontWeight: 'bold'
                 }}
               >

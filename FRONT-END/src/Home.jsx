@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Components/Header';
-import { Container, Row, Col, Dropdown } from 'react-bootstrap';
+import { Container, Row, Col, Dropdown, Button } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import SidebarMenu from './Components/SideMenu';
 import FeedCard from './Components/FeedCard';
 import Loader from './Components/Loader';
@@ -11,6 +12,7 @@ import './Home.css';
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchValue, setSearchValue] = useState('');
   const [categoryModal, setCategoryModal] = useState(false);
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(null);
@@ -30,6 +32,13 @@ const Home = () => {
     setSelectedCategory(null);
     fetchPosts();
   };
+
+  const handleWhatIsHappeningClick = () => {
+ 
+  console.log("Fetching updates from your area...");
+ 
+};
+
 
   const openGoLiveModal = () => setShowGoLiveModal(true);
   const closeGoLiveModal = () => {
@@ -173,38 +182,41 @@ const Home = () => {
            <Col xs={12} md={6}>
            <h6 className="mb-0">Top Categories:</h6>
             </Col>
-           <Col xs={12} md={6} className="text-md-end mt-2 mt-md-0">
-                <Dropdown show={categoryModal} onToggle={() => setCategoryModal(!categoryModal)}>
-                  <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                    {selectedCategory || 'Select Category'}
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu>
-                    {categories.map((cat, idx) => (
-                      <Dropdown.Item key={idx} onClick={() => handleCategorySelect(cat)}>
-                        {cat}
-                      </Dropdown.Item>
-                    ))}
-                    <Dropdown.Item onClick={() => handleCategorySelect(null)}>
-                      Clear Filter
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Col>
+            <Col xs={12} md={6} className="d-flex flex-wrap gap-2 justify-content-md-end align-items-center mt-2 mt-md-0">
+  <Form.Control
+    type="text"
+    placeholder="Type to search"
+    className="flex-grow-1"
+    value={searchValue}
+    onChange={(e) => setSearchValue(e.target.value)}
+    style={{ minWidth: '180px', maxWidth: '200px' }}
+  />
+
+  <Dropdown show={categoryModal} onToggle={() => setCategoryModal(!categoryModal)}>
+    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+      {selectedCategory || 'Select Category'}
+    </Dropdown.Toggle>
+    <Dropdown.Menu>
+      {categories.map((cat, idx) => (
+        <Dropdown.Item key={idx} onClick={() => handleCategorySelect(cat)}>
+          {cat}
+        </Dropdown.Item>
+      ))}
+      <Dropdown.Item onClick={handleCloseModal}>
+        Clear Filter
+      </Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+
+  <Button variant="outline-primary" onClick={handleWhatIsHappeningClick}>
+    What is happening in your area
+  </Button>
+</Col>
+
             </Row>
 
-                  <Row className="align-items-center mb-3">
-                <Col md={9} className="mb-2 mb-md-0">  
-                <div className="input-group custom-update-box">
-                  <span className="input-group-text bg-white border-end-0 p-0 pe-2">
-                    <img
-                      src={user?.data?.thumbnail || '../../images/user.png'}
-                      alt="User"
-                      width="30"
-                      height="30"
-                      className="rounded-circle left-space"
-                    />
-                  </span>
-                  <input
+                <div className="input-group custom-update-box" onClick={openGoLiveModal} style={{ cursor: 'pointer' }}>
+                 <input
                     className="form-control border-start-0 shadow-none"
                     placeholder="Post an Update"
                   />
@@ -212,27 +224,29 @@ const Home = () => {
               </Col>
                 
                 <Col md={3}>
-               <button
-          className="btn btn-go-live w-100"
-         onClick={openGoLiveModal}
-         >
-       <i className="bi bi-camera-video-fill me-2"></i>
-       Go Live
-      </button>
-    </Col>
-            
-            </Row>
-         {filteredPosts.length > 0 ? (
+               <div className="px-3 my-3">
+              <button
+             className="btn btn-danger w-100 py-2 d-flex align-items-center justify-content-center"
+              onClick={openGoLiveModal}
+              >
+          <i className="bi bi-camera-video-fill me-2"></i>
+           Go Live
+         </button>
+      </div>
+    
+            {/* Feed card */}
+             {filteredPosts.length > 0 ? (
               filteredPosts.map((post, index) => (
-                <FeedCard
-                  key={index}
-                  user={{
-                    name:
-                      post.user
-                        ? `${post.user.firstName || ''} ${post.user.lastName || ''}`.trim()
-                        : 'Anonymous',
-                    avatar: post.user?.thumbnail || '../images/user.png',
-                  }}
+                 <div className="feed-card mb-3 shadow-sm rounded" key={index}>
+               <FeedCard
+               key={index}
+              user={{
+               name:
+                post.user
+                  ? `${post.user.firstName || ''} ${post.user.lastName || ''}`.trim()
+                  : 'Anonymous',
+              avatar: post.user?.thumbnail || '../images/user.png',
+              }}
                   time="2m ago"
                   location={post.location || 'Unknown'}
                   text={post.caption}
@@ -248,25 +262,17 @@ const Home = () => {
                   currentUserId={userID}
                   postId={post._id}
                 />
+                </div>
               ))
             ) : (
-              <p>No posts found.</p>
+              <div className="text-center py-5 text-muted">
+        <i className="bi bi-inbox fs-2 mb-2 d-block"></i>
+        <p>No posts found.</p>
+      </div>
             )}
           </Col>
 
-            <Col md={3} className="py-3 d-none d-md-block sidebar-right">
-         <div className="input-group mb-3">
-        <span className="input-group-text bg-white border-end-0">
-      <i className="bi bi-search"></i>
-       </span>
-    <input className="form-control border-start-0" placeholder="Type to search" />
-  </div>
-
-     <div className="bg-light p-3 rounded shadow-sm">
-    <span className="fw-bold">What is happening in your area</span>
-    </div>
-  </Col>
-         
+            
         </Row>
 
         {showGoLiveModal && (

@@ -2,7 +2,7 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import "./SideMenu.css";
 
-const SidebarMenu = () => {
+const SideMenu = () => {
   return (
     <div className="sidebar-container">
       <Nav defaultActiveKey="/home" className="sidebar-nav">
@@ -31,4 +31,4 @@ const SidebarMenu = () => {
   );
 };
 
-export default SidebarMenu;
+export default SideMenu;

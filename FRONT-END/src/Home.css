@@ -82,17 +82,21 @@
   color: #dc3545;
 }
 
-/* NEW: No posts feedback */
-.no-posts-text {
-  text-align: center;
-  color: #888;
-  font-style: italic;
-  margin-top: 20px;
+/* FeedCard style */ 
+.feed-card-wrapper {
+  margin-bottom: 1rem;
 }
 
-/* NEW: Post card margin if using .feed-card */
-.feed-card {
-  margin-bottom: 16px;
+.no-posts {
+  text-align: center;
+  padding: 5rem 1rem;
+  color: #6c757d;
+}
+
+.no-posts .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
 /* NEW: Accessibility focus outline */

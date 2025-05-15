@@ -233,43 +233,42 @@ const Home = () => {
            Go Live
          </button>
       </div>
-    
-            {/* Feed card */}
-             {filteredPosts.length > 0 ? (
-              filteredPosts.map((post, index) => (
-                 <div className="feed-card mb-3 shadow-sm rounded" key={index}>
-               <FeedCard
-               key={index}
-              user={{
-               name:
-                post.user
-                  ? `${post.user.firstName || ''} ${post.user.lastName || ''}`.trim()
-                  : 'Anonymous',
-              avatar: post.user?.thumbnail || '../images/user.png',
-              }}
-                  time="2m ago"
-                  location={post.location || 'Unknown'}
-                  text={post.caption}
-                  media={post.media}
-                  tag={post.tag}
-                  likes={post.likes}
-                  comments={post.comments}
-                  shares={post.shares}
-                  onLike={() => handleLike(post._id)}
-                  onComment={handleAddComment}
-                  onFollow={() => console.log('Shared or Followed')}
-                  onDelete={() => handleDelete(post._id)}
-                  currentUserId={userID}
-                  postId={post._id}
-                />
-                </div>
-              ))
-            ) : (
-              <div className="text-center py-5 text-muted">
-        <i className="bi bi-inbox fs-2 mb-2 d-block"></i>
-        <p>No posts found.</p>
-      </div>
-            )}
+    {/* Feed card list */}
+  {filteredPosts.length > 0 ? (
+  filteredPosts.map((post, index) => (
+    <div className="feed-card-wrapper" key={index}>
+      <FeedCard
+        user={{
+          name: post.user
+            ? `${post.user.firstName || ''} ${post.user.lastName || ''}`.trim()
+            : 'Anonymous',
+          avatar: post.user?.thumbnail || '../images/user.png',
+        }}
+        time="2m ago"
+        location={post.location || 'Unknown'}
+        text={post.caption}
+        media={post.media}
+        tag={post.tag}
+        likes={post.likes}
+        comments={post.comments}
+        shares={post.shares}
+        onLike={() => handleLike(post._id)}
+        onComment={handleAddComment}
+        onFollow={() => console.log('Shared or Followed')}
+        onDelete={() => handleDelete(post._id)}
+        currentUserId={userID}
+        postId={post._id}
+      />
+    </div>
+  ))
+) : (
+  <div className="no-posts">
+    <i className="bi bi-inbox icon"></i>
+    <p>No posts found.</p>
+  </div>
+)}
+
+            
           </Col>
 
             
